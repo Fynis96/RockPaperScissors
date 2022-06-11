@@ -68,5 +68,5 @@ function game(){
     }
 }
 
-game();
+//game();
 

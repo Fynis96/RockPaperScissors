@@ -1,3 +1,5 @@
+let pcScore = 0;
+let cpScore = 0;
 
 function computerPlay() {
     let randomNumber = Math.floor(Math.random()*3) + 1;
@@ -16,10 +18,16 @@ function computerPlay() {
 function play(pc, cp) {
     if (pc === 'Rock' && cp === 'Scissors' || pc === 'Paper' && cp === 'Rock' || pc === 'Scissors' && cp === 'Paper') {
         console.log("Congratulations, you beat the guy.");
+        pcScore++;
+        divScore.innerHTML = 'Score: ' + pcScore.toString();
+        if(pcScore >= 5){
+            divResult.innerHTML = 'Player Wins!';
+        }
         return 'win';
     }
     else if(cp === 'Rock' && pc === 'Scissors' || cp === 'Paper' && pc === 'Rock' || cp === 'Scissors' && pc === 'Paper'){
         console.log("No win here brother.");
+        cpScore++;
         return 'lose';
     }
     else if(pc ==='Rock' && cp === 'Rock' || pc ==='Paper' && cp === 'Paper' || pc === 'Scissors' && cp === 'Scissors'){
@@ -27,6 +35,7 @@ function play(pc, cp) {
         return 'tie';
     }
 }
+
 
 
 
@@ -46,3 +55,9 @@ document.querySelector(".buttonbox").addEventListener('click', function(event){
         console.log('scissors');
     }
 })
+
+const divScore = document.querySelector('.score');
+const divResult = document.querySelector('.results');
+
+
+

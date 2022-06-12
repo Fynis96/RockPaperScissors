@@ -1,19 +1,4 @@
 
-
-
-function playerSelection() {
-    let input = parseInt(prompt("1-Rock, 2-Paper, 3-Scissors"));
-    if(input === 1){
-        return 'Rock';
-    }
-    else if(input === 2){
-        return 'Paper';
-    }
-    else if(input === 3){
-        return 'Scissors';
-    }
-}
-
 function computerPlay() {
     let randomNumber = Math.floor(Math.random()*3) + 1;
     if(randomNumber === 1){
@@ -43,30 +28,21 @@ function play(pc, cp) {
     }
 }
 
-function game(){
-    let pcScore = 0;
-    let cpScore = 0;
-    let round = '';
-    
-    for(i=0; i<5; i++){
-       round = play(playerSelection(), computerPlay());
-        if(round === 'win'){
-            pcScore++;
-        }
-        else if(round === 'lose'){
-            cpScore++;
-        }
-    }
-    if(pcScore > cpScore){
-        console.log('You won the whole the thing');
-    }
-    else if(pcScore < cpScore){
-        console.log('The guy really won this time');
-    }
-    else if(pcScore === cpScore){
-        console.log('Somehow ya really tied.');
-    }
-}
 
-//game();
 
+document.querySelector(".buttonbox").addEventListener('click', function(event){
+    //console.log(event);
+    if(event.target.innerHTML === 'R'){
+        computerPlay();
+        play('Rock', computerPlay());
+        console.log('rock');
+    }
+    else if(event.target.innerHTML === 'P'){
+        play('Paper', computerPlay());
+        console.log('paper');
+    }
+    else if(event.target.innerHTML === 'S'){
+        play('Scissors', computerPlay());
+        console.log('scissors');
+    }
+})
